@@ -38,18 +38,24 @@ const rl = createInterface({
 
 rl.question('文字列を入力してください：', (line) => {
     console.log(`${line}が入力されました`);
-    rl.close();
+    rl.question('名前：', (name) => {
+        console.log(`名前は${name}です`);
+        rl.question('数値を入力してください：', (num) => {
+            console.log(`1000を足すと${Number(num) + 1000}です。`);
+            rl.close();
+        });
+    });
 });
 
-rl.question('名前：', (name) => {
-    console.log(`名前は${name}です`);
-    rl.close();
-});
+// rl.question('名前：', (name) => {
+//     console.log(`名前は${name}です`);
+//     rl.close();
+// });
 
-rl.question('数値を入力してください：', (num) => {
-    console.log(`1000を足すと、${num + 1000}です`);
-    rl.close();
-});
+// rl.question('数値を入力してください：', (num) => {
+//     console.log(`1000を足すと、${num + 1000}です`);
+//     rl.close();
+// });
 
 const num3 = Number(true);
 const num4 = Number(false);
@@ -61,7 +67,7 @@ const bigint2 = BigInt(500);
 const bigint3 = BigInt(true);
 console.log(bigint1, bigint2, bigint3);
 
-const bigint = BigInt("fooo");
-console.log("bigint is", bigint); //NaN
+//const bigint = BigInt("fooo");
+//console.log("bigint is", bigint); //NaN
 
 
