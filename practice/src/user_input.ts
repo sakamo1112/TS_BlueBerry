@@ -1,17 +1,17 @@
-import {createInterface} from 'readline';
+import { createInterface } from 'readline';
 
 function askQuestion(query: string) {
     const rl = createInterface({
         input: process.stdin,
-        output: process.stdout
+        output: process.stdout,
     });
 
-    return new Promise(resolve => 
-        rl.question(query, ans => {
+    return new Promise((resolve) =>
+        rl.question(query, (ans) => {
             rl.close();
             resolve(ans);
-        }))
-
+        })
+    );
 }
 
 async function main() {

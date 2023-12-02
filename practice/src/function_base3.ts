@@ -22,8 +22,8 @@ class Female {
     }
 }
 
-const male: Male = new Male("John");
-const female: Female = new Female("Jane");
+const male: Male = new Male('John');
+const female: Female = new Female('Jane');
 console.log(male.toString()); // "Monsieur John"
 console.log(female.toString()); // "Madame Jane"
 

@@ -19,13 +19,13 @@ const plus_array1: plus_arr = (array) => {
         sum += array[i];
     }
     return sum;
-}
+};
 const return_idx2: ret_idx = (array) => array[2];
 
 const plus2: plus_num = (num) => num + 2;
 
-const array: number[] = [1, 2, 3 ,4 ,5];
-const array1: number[] = [1, 2, 3 ,4 ,5, 6, 7, 8, 9, 10];
+const array: number[] = [1, 2, 3, 4, 5];
+const array1: number[] = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
 
 console.log(plus_array(array));
 console.log(plus_array(array1));
@@ -33,4 +33,3 @@ console.log(plus_array1(array));
 console.log(plus_array1(array1));
 console.log(return_idx2(array));
 console.log(return_idx2(array1));
-
