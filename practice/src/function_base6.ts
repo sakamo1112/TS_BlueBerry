@@ -45,13 +45,13 @@ type GreetHelloType = (name: string | string[]) => void;
 //function greetHello(name: string[]): void; //関数シグネチャ2
 
 //全ての関数シグネチャを網羅する実装
-const greetHello: GreetHelloType = (name) =>{
-    if (typeof name === "string") {
+const greetHello: GreetHelloType = (name) => {
+    if (typeof name === 'string') {
         console.log(`こんにちは、${name}さん`);
-    }else {
-        console.log(`こんにちは、${name.join("さん、")}さん`);
+    } else {
+        console.log(`こんにちは、${name.join('さん、')}さん`);
     }
-}
+};
 
 //関数シグネチャ 詳しい順に書く
 function func(param: 1 | 2): 1 | 2; // 詳しい関数
@@ -62,34 +62,33 @@ function func(param: any): any; // 詳しくない関数
 function func(param: any): any {
     if (param in [1, 2]) {
         return param;
-    }else if (typeof param === "number") {
+    } else if (typeof param === 'number') {
         return param + 1000;
-    }else {
+    } else {
         return 'others';
     }
-};
+}
 const result1 = func(1);
 const result2 = func(100);
-const result3 = func("その他");
+const result3 = func('その他');
 console.log(result1, result2, result3);
-
 
 //typeを使った実装
 type Func2 = {
-    (param: 1 | 2): 1 | 2, // 詳しい関数
-    (param: number): number, // そこそこ詳しい関数
-    (param: any): any, // 詳しくない関数
+    (param: 1 | 2): 1 | 2; // 詳しい関数
+    (param: number): number; // そこそこ詳しい関数
+    (param: any): any; // 詳しくない関数
 };
 const func2: Func2 = (param) => {
     if (param in [1, 2]) {
         return param;
-    }else if (typeof param === "number") {
+    } else if (typeof param === 'number') {
         return param + 1000;
-    }else {
+    } else {
         return 'others';
     }
-}
+};
 const result4 = func2(1);
 const result5 = func2(100);
-const result6 = func2("その他");
+const result6 = func2('その他');
 console.log(result4, result5, result6);
