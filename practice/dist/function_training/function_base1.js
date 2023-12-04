@@ -14,8 +14,12 @@ var plus_array1 = function (array) {
     }
     return sum;
 };
-var return_idx2 = function (array) { return array[2]; };
-var plus2 = function (num) { return num + 2; };
+var return_idx2 = function (array) {
+    return array[2];
+};
+var plus2 = function (num) {
+    return num + 2;
+};
 var array = [1, 2, 3, 4, 5];
 var array1 = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
 console.log(plus_array(array));

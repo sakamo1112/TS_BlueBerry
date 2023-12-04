@@ -1,6 +1,6 @@
-"use strict";
-Object.defineProperty(exports, "__esModule", { value: true });
-var promises_1 = require("fs/promises");
+'use strict';
+Object.defineProperty(exports, '__esModule', { value: true });
+var promises_1 = require('fs/promises');
 //Promiseの解決：Promiseの結果が決まること
 //Promiseオブジェクトの解決には、状態が2種類->「fulfilled」（成功）と「rejected」（失敗）がある.
 //Promiseが成功：.then()メソッド内のコールバック関数が呼び出される.
@@ -29,8 +29,11 @@ p.finally(function () {
     console.log('終わりました');
 });
 //書き方2  thenに引数2つを渡すことによってもエラーハンドリングができる.
-p.then(function (data) {
-    console.log('成功', data);
-}, function (error) {
-    console.log('失敗', error);
-});
+p.then(
+    function (data) {
+        console.log('成功', data);
+    },
+    function (error) {
+        console.log('失敗', error);
+    }
+);

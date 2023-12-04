@@ -29,7 +29,7 @@ var p = new Promise(function (resolve) {
     }, 3000);
 });
 p.then(function (num) {
-    console.log("\u7D50\u679C\u306F".concat(num));
+    console.log('\u7D50\u679C\u306F'.concat(num));
 });
 var sleep = function (duration) {
     return new Promise(function (resolve) {
