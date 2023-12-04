@@ -30,3 +30,29 @@ p.then(
         console.log(error);
     }
 );
+
+//Promiseの静的メソッド3 .allSettled .any
+//.allSettledは全てのPromiseの結果を受け取る.したがって、全部終わるまで.thenは呼ばれない.
+const p_settled = Promise.allSettled([
+    readFile('foo.txt', 'utf-8'),
+    sleepReject(5000).catch((error: unknown) => {
+        console.log('5秒経過');
+    }),
+]);
+p_settled.then((results) => {
+    console.log('---allSettled---')
+    console.log('--results[0]--');
+    console.log(results[0].status);
+    console.log('--results[1]--');
+    console.log(results[1].status);
+});
+
+//.anyは最初に解決したPromiseの結果を受け取る.es2021から？
+/*const p_any = Promise.any([
+    readFile('foo.txt', 'utf-8'),
+    sleepReject(5000),
+]);
+p.then((result) => {
+    console.log('---any---')
+    console.log(result);
+});*/
