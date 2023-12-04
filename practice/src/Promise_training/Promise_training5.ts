@@ -40,7 +40,7 @@ const p_settled = Promise.allSettled([
     }),
 ]);
 p_settled.then((results) => {
-    console.log('---allSettled---')
+    console.log('---allSettled---');
     console.log('--results[0]--');
     console.log(results[0].status);
     console.log('--results[1]--');

@@ -1,6 +1,6 @@
-"use strict";
-Object.defineProperty(exports, "__esModule", { value: true });
-var promises_1 = require("fs/promises");
+'use strict';
+Object.defineProperty(exports, '__esModule', { value: true });
+var promises_1 = require('fs/promises');
 //Promiseの静的メソッド2-2 .race
 //.raceは最初に解決したPromiseの結果を受け取る（成功か失敗かは関係なく、解決したもの）
 //タイムアウト処理に使える
@@ -20,12 +20,15 @@ var p = Promise.race([
     }),
     sleepReject(100),
 ]);
-p.then(function (result) {
-    console.log(result);
-}, function (error) {
-    console.log('失敗');
-    console.log(error);
-});
+p.then(
+    function (result) {
+        console.log(result);
+    },
+    function (error) {
+        console.log('失敗');
+        console.log(error);
+    }
+);
 //Promiseの静的メソッド3 .allSettled .any
 //.allSettledは全てのPromiseの結果を受け取る.したがって、全部終わるまで.thenは呼ばれない.
 var p_settled = Promise.allSettled([
@@ -49,4 +52,4 @@ p_settled.then(function (results) {
 p.then((result) => {
     console.log('---any---')
     console.log(result);
-});*/ 
+});*/
