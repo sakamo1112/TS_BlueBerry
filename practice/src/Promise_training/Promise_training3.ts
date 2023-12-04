@@ -26,7 +26,7 @@ Promiseはこの値で解決されます。その後、.then()メソッドを使
 */
 const p = new Promise<number>((resolve) => {
     setTimeout(() => {
-        resolve(100);  // Promiseを解決し、値100を返す
+        resolve(100); // Promiseを解決し、値100を返す
     }, 3000);
 });
 
@@ -41,8 +41,9 @@ const sleep = (duration: number) => {
 };
 
 const sleepReject = (duration: number) => {
-    return new Promise<never>((resolve, reject) => { //決して成功しないのでnever型
-        setTimeout(reject, duration);                //duration[ms]後にrejectを呼び出す関数
+    return new Promise<never>((resolve, reject) => {
+        //決して成功しないのでnever型
+        setTimeout(reject, duration); //duration[ms]後にrejectを呼び出す関数
     });
 };
 sleep(3000).then(() => {
@@ -50,5 +51,5 @@ sleep(3000).then(() => {
     sleepReject(3000).catch(() => {
         console.log('エラーが発生しました');
     });
-    console.log('sleepRejectを呼び出しています')
+    console.log('sleepRejectを呼び出しています');
 });
