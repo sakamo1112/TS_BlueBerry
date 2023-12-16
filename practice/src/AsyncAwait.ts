@@ -25,11 +25,11 @@ const sleep1: tySL = (duration) => {
 
 // async関数の型アノテーション
 // await : 与えられたPromiseの結果が出るまで待つ.
-type G3 = () => Promise<number>;  // async関数の型を定義する際は、返り値をPromiseにする必要がある.
+type G3 = () => Promise<number>; // async関数の型を定義する際は、返り値をPromiseにする必要がある.
 const get3_1: G3 = async () => {
-    console.log('get3_1が呼び出されました.')
+    console.log('get3_1が呼び出されました.');
     await sleep1(1000);
-    console.log('awaitの次に進みました.')
+    console.log('awaitの次に進みました.');
     return 3;
 };
 
@@ -45,22 +45,25 @@ const main: G3 = async () => {
     const num2 = await get3_1();
     const num3 = await get3_1();
     return num1 + num2 + num3;
-}
+};
 
 main().then((num) => {
     console.log(`num is ${num}`);
 });
 
 const ReadWrite = async (): Promise<void> => {
-    const { readFile, writeFile} = await import('fs/promises');
-    const readdata = await readFile('data/foo.txt', 'utf-8');
-    await writeFile('data/bar.txt', readdata + readdata);
-}
+    try {
+        const { readFile, writeFile } = await import('fs/promises');
+        const readdata = await readFile('data/foo.txt', 'utf-8');
+        await writeFile('data/bar.txt', readdata + readdata);
+    } catch {
+        console.error('ファイルの読み書きに失敗しました.');
+        throw new Error('ファイルの読み書きに失敗しました.');
+    }
+};
 
 console.log('ReadWriteを呼び出します.');
 ReadWrite().then(() => {
     console.log('書き込みに成功しました.');
-}, (err) => {
-    console.log('書き込みに失敗しました.');
 });
-console.log('ReadWriteを呼び出しました.')
+console.log('ReadWriteを呼び出しました.');
