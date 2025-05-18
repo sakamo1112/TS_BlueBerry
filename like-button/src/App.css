@@ -40,3 +40,19 @@
 .read-the-docs {
   color: #888;
 }
+
+.likeButton {
+  background-color: rgb(231, 76, 60);
+  color: white;
+  padding: 0.8rem;
+  border-radius: 0.4rem;
+  cursor: pointer;
+}
+
+.goodButton {
+  background-color: rgb(46, 204, 113);
+  color: white;
+  padding: 0.8rem;
+  border-radius: 0.4rem;
+  cursor: pointer;
+}
