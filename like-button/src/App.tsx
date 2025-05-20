@@ -25,6 +25,10 @@ function App() {
     setButtonConfigs([...buttonConfigs, newButton]);
   };
 
+  const removeButton = (idToRemove: string) => {
+    setButtonConfigs(buttonConfigs.filter(config => config.id !== idToRemove));
+  }
+
   return (
     <>
       <button onClick={addButton} style={{ marginBottom: "20px"}}>新しいボタンを追加</button>
@@ -32,10 +36,12 @@ function App() {
         <div key={config.id} style={{marginBottom: "30px"}}>
           <p>{i}番目のボタン</p>
           <CounterButton
+            id={config.id}
             icon={config.icon}
             initialCount={config.initialCount}
             incrementAmount={config.incrementAmount}
             className={config.className}
+            onRemove={removeButton}
           />
         </div>
       ))}
@@ -44,20 +50,27 @@ function App() {
 }
 
 interface CounterButtonProps {
+  id: string;
   icon: string;
   initialCount: number;
   incrementAmount: number;
   className?: string;
+  onRemove: (id: string) => void;
 }
 
-function CounterButton({ icon, initialCount, incrementAmount, className}: CounterButtonProps) {
+function CounterButton({ id, icon, initialCount, incrementAmount, className, onRemove}: CounterButtonProps) {
   const [count, setCount] = useState(initialCount);
   const handleClick = () => {
     setCount(count + incrementAmount);
   }
+  const handleRemove = () => {
+    onRemove(id);
+  };
+
   return (
     <>
       <span className={className} onClick={handleClick}>{icon} {count}</span>
+      <button onClick={handleRemove} style={{ marginLeft: "10px"}}>削除</button>
       {count >= 5 && count < 10 && <p> たくさんクリックされました！</p>}
       {count >= 10 && count < 50 && <p> さらにたくさんクリックされました！</p>}
       {count >= 50 && <p> すごい!50回以上クリックされました!</p>}
