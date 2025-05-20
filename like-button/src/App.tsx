@@ -2,15 +2,32 @@ import "./App.css";
 import {useState} from "react";
 
 
-const buttonConfigs = [
+const initialButtonConfigs = [
   {id: "like", icon: "❤️", initialCount: 0, incrementAmount: 1, className: "likeButton"},
   {id: "good", icon: "👍", initialCount: 0, incrementAmount: 5, className: "goodButton"},
   {id: "star", icon: "⭐️", initialCount: 0, incrementAmount: 10, className: "starButton"}
-]
+];
+
+let nextId = initialButtonConfigs.length;
 
 function App() {
+  const [buttonConfigs, setButtonConfigs] = useState(initialButtonConfigs);
+
+  const addButton = () => {
+    let newAmount = 5 * nextId;
+    const newButton = {
+      id: `new-${nextId++}`,
+      icon: "✨",
+      initialCount: 0,
+      incrementAmount: newAmount,
+      className: "newButton"
+    };
+    setButtonConfigs([...buttonConfigs, newButton]);
+  };
+
   return (
     <>
+      <button onClick={addButton} style={{ marginBottom: "20px"}}>新しいボタンを追加</button>
       {buttonConfigs.map((config, i) => (
         <div key={config.id} style={{marginBottom: "30px"}}>
           <p>{i}番目のボタン</p>
