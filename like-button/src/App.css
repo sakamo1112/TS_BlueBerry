@@ -56,3 +56,11 @@
   border-radius: 0.4rem;
   cursor: pointer;
 }
+
+.starButton {
+  background-color: rgb(241, 196, 15);
+  color: white;
+  padding: 0.8rem;
+  border-radius: 0.4rem;
+  cursor: pointer;
+}

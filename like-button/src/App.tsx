@@ -1,15 +1,27 @@
 import "./App.css";
 import {useState} from "react";
 
+
+const buttonConfigs = [
+  {id: "like", icon: "❤️", initialCount: 0, incrementAmount: 1, className: "likeButton"},
+  {id: "good", icon: "👍", initialCount: 0, incrementAmount: 5, className: "goodButton"},
+  {id: "star", icon: "⭐️", initialCount: 0, incrementAmount: 10, className: "starButton"}
+]
+
 function App() {
   return (
     <>
-      <div style={{marginBottom: '30px' }}>
-        <CounterButton icon="❤️" initialCount={0} incrementAmount={1} className="likeButton"/>
-      </div>
-      <div>
-        <CounterButton icon="👍" initialCount={0} incrementAmount={10} className="goodButton" />
-      </div>
+      {buttonConfigs.map((config, i) => (
+        <div key={config.id} style={{marginBottom: "30px"}}>
+          <p>{i}番目のボタン</p>
+          <CounterButton
+            icon={config.icon}
+            initialCount={config.initialCount}
+            incrementAmount={config.incrementAmount}
+            className={config.className}
+          />
+        </div>
+      ))}
     </>
   );
 }
@@ -27,8 +39,13 @@ function CounterButton({ icon, initialCount, incrementAmount, className}: Counte
     setCount(count + incrementAmount);
   }
   return (
-    <span className={className} onClick={handleClick}>{icon} {count}</span>
-  )
+    <>
+      <span className={className} onClick={handleClick}>{icon} {count}</span>
+      {count >= 5 && count < 10 && <p> たくさんクリックされました！</p>}
+      {count >= 10 && count < 50 && <p> さらにたくさんクリックされました！</p>}
+      {count >= 50 && <p> すごい!50回以上クリックされました!</p>}
+    </>
+  );
 }
 
 // function LikeButton() {
